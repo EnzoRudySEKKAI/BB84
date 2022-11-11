@@ -2,8 +2,8 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -38,7 +38,7 @@ func testNusers(nbQ int, pola int, n int) int {
 			r = rand.Intn(pola)
 			basisTemp := rand.Intn(pola)
 
-			listUsers[j+1].getQbits()[i] = qbit{listUsers[j].getQbits()[i].measure(basisTemp, pola), listUsers[j].getQbits()[i].getPolarisation()}
+			listUsers[j+1].getQbits()[i] = qbit{listUsers[j].getQbits()[i].measure(basisTemp), listUsers[j].getQbits()[i].getPolarisation()}
 
 		}
 
@@ -52,38 +52,9 @@ func testNusers(nbQ int, pola int, n int) int {
 }
 
 func main() {
-	var cptfi float64 = 0
-	nTest := 20
-
-	pola := 2
-	nQ := 1000
-	nb_personnes := 2
-
-	fmt.Println("Test avec:", pola, "polarités et ", nQ, " qbits. (", nTest, " tests)")
-	for n := 0; n < nTest; n++ {
-		cptfi += float64(test75(nQ, pola))
+	if os.Args[1] == "server" {
+		Server()
+	} else if os.Args[1] == "client" {
+		Client()
 	}
-	var cptfinal = cptfi / float64(nTest)
-	fmt.Println("2 personnes sans eve :", cptfinal)
-
-	cptfi = 0
-	for n := 0; n < nTest; n++ {
-		cptfi += float64(test62(nQ, pola))
-	}
-	cptfinal = cptfi / float64(nTest)
-	fmt.Println("2 personnes avec eve :", cptfinal)
-
-	cptfi = 0
-	for n := 0; n < nTest; n++ {
-		cptfi += float64(test3users(nQ, pola))
-	}
-	cptfinal = cptfi / float64(nTest)
-	fmt.Println("2 personnes avec eve et quelqu'un d'autre:", cptfinal)
-
-	cptfi = 0
-	for n := 0; n < nTest; n++ {
-		cptfi += float64(testNusers(nQ, pola, nb_personnes))
-	}
-	cptfinal = cptfi / float64(nTest)
-	fmt.Println("N personnes:", cptfinal)
 }

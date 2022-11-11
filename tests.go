@@ -16,7 +16,7 @@ func test75(nbQ int, pola int) int {
 		value := rand.Intn(2)
 		alice.getQbits()[i] = qbit{value, r}
 		basis := rand.Intn(pola)
-		bob.getQbits()[i] = qbit{alice.getQbits()[i].measure(basis, pola), alice.getQbits()[i].getPolarisation()}
+		bob.getQbits()[i] = qbit{alice.getQbits()[i].measure(basis), alice.getQbits()[i].getPolarisation()}
 		if bob.getQbits()[i].getValue() == alice.getQbits()[i].getValue() {
 			cpt++
 		}
@@ -36,8 +36,8 @@ func test62(nbQ int, pola int) int {
 		alice.getQbits()[i] = qbit{value, r}
 		basisEve := rand.Intn(pola)
 		basisBob := rand.Intn(pola)
-		eve.getQbits()[i] = qbit{alice.getQbits()[i].measure(basisEve, pola), alice.getQbits()[i].getPolarisation()}
-		bob.getQbits()[i] = qbit{eve.getQbits()[i].measure(basisBob, pola), eve.getQbits()[i].getPolarisation()}
+		eve.getQbits()[i] = qbit{alice.getQbits()[i].measure(basisEve), alice.getQbits()[i].getPolarisation()}
+		bob.getQbits()[i] = qbit{eve.getQbits()[i].measure(basisBob), eve.getQbits()[i].getPolarisation()}
 		if bob.getQbits()[i].getValue() == alice.getQbits()[i].getValue() {
 			cpt++
 		}
@@ -60,9 +60,9 @@ func test3users(nbQ int, pola int) int {
 		basisEve := rand.Intn(pola)
 		basisBob := rand.Intn(pola)
 		basisS := rand.Intn(pola)
-		eve.getQbits()[i] = qbit{alice.getQbits()[i].measure(basisEve, pola), alice.getQbits()[i].getPolarisation()}
-		someone.getQbits()[i] = qbit{eve.getQbits()[i].measure(basisS, pola), eve.getQbits()[i].getPolarisation()}
-		bob.getQbits()[i] = qbit{someone.getQbits()[i].measure(basisBob, pola), someone.getQbits()[i].getPolarisation()}
+		eve.getQbits()[i] = qbit{alice.getQbits()[i].measure(basisEve), alice.getQbits()[i].getPolarisation()}
+		someone.getQbits()[i] = qbit{eve.getQbits()[i].measure(basisS), eve.getQbits()[i].getPolarisation()}
+		bob.getQbits()[i] = qbit{someone.getQbits()[i].measure(basisBob), someone.getQbits()[i].getPolarisation()}
 		if bob.getQbits()[i].getValue() == alice.getQbits()[i].getValue() {
 			cpt++
 		}

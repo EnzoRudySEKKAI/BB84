@@ -23,7 +23,7 @@ func (q qbit) setValue(value int) {
 	q.value = value
 }
 
-func (q qbit) measure(basis int, pola int) int {
+func (q qbit) measure(basis int) int {
 	if basis == q.getPolarisation() {
 		return q.getValue()
 	} else {
