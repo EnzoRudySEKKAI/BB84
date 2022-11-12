@@ -1,13 +1,13 @@
 package main
 
 type User struct {
-	qbits []qbit
+	qbits []Qbit
 }
 
-func (u User) getQbits() []qbit {
+func (u User) getQbits() []Qbit {
 	return u.qbits
 }
 
-func (u User) setQbits(qbits []qbit) {
+func (u User) setQbits(qbits []Qbit) {
 	u.qbits = qbits
 }

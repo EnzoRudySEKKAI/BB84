@@ -2,28 +2,28 @@ package main
 
 import "math/rand"
 
-type qbit struct {
+type Qbit struct {
 	value        int
 	polarisation int
 }
 
-func (q qbit) getValue() int {
+func (q Qbit) getValue() int {
 	return q.value
 }
 
-func (q qbit) getPolarisation() int {
+func (q Qbit) getPolarisation() int {
 	return q.polarisation
 }
 
-func (q qbit) setPolarisation(polarisation int) {
+func (q Qbit) setPolarisation(polarisation int) {
 	q.polarisation = polarisation
 }
 
-func (q qbit) setValue(value int) {
+func (q Qbit) setValue(value int) {
 	q.value = value
 }
 
-func (q qbit) measure(basis int) int {
+func (q Qbit) measure(basis int) int {
 	if basis == q.getPolarisation() {
 		return q.getValue()
 	} else {
