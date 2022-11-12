@@ -8,6 +8,7 @@ import (
 )
 
 func Client() {
+
 	fmt.Println("start client")
 	conn, err := net.Dial("tcp", "localhost:8080")
 	if err != nil {
@@ -15,6 +16,7 @@ func Client() {
 	}
 	encoder := gob.NewEncoder(conn)
 	p := &Qbit{1, 0}
+	fmt.Println("Sending : ", *p)
 	encoder.Encode(p)
 	conn.Close()
 	fmt.Println("done")

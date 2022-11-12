@@ -6,6 +6,7 @@ import (
 )
 
 func test75(nbQ int, pola int) int {
+	//create users
 	alice := User{make([]Qbit, nbQ)}
 	bob := User{make([]Qbit, nbQ)}
 	cpt := 0
@@ -45,7 +46,7 @@ func test62(nbQ int, pola int) int {
 	return (100 * cpt) / nbQ
 }
 
-func test3users(nbQ int, pola int) int {
+func test4users(nbQ int, pola int) int {
 	alice := User{make([]Qbit, nbQ)}
 	bob := User{make([]Qbit, nbQ)}
 	eve := User{make([]Qbit, nbQ)}
