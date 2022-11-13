@@ -16,6 +16,22 @@ List of arguments
 $ ./BB84
 ```
 
+### parameters ###
+You can change the parameters in the file `com.go`
+```
+//number of qbits
+nbQ := 100
+
+//number of polarities
+pola := 2
+
+//number of users
+nbUsers := 3
+
+//number of tests
+nTest := 100000
+```
+
 #### Server-client mode ####
 ```
 $ ./BB84 server
